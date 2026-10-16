@@ -1,14 +1,14 @@
-# Plugin Antigravity: `data-shield`
+# Plugin Antigravity: `bolivia-research-agent` (`data-shield`)
 
-`data-shield` es un plugin para **Antigravity CLI** diseñado para permitir la manipulación, limpieza y análisis estadístico de datos en **Jupyter Notebooks (`.ipynb`)**.
+`bolivia-research-agent` (construido sobre la infraestructura de `data-shield`) es un plugin avanzado para **Antigravity CLI** diseñado para la investigación de datos económicos, financieros y soberanos de **Bolivia**, así como la manipulación, limpieza y modelado estadístico riguroso en **Jupyter Notebooks (`.ipynb`)**.
 
-Su propósito es proporcionar herramientas al agente de IA para interactuar con notebooks ejecutados en un kernel de Jupyter local, mientras actúa como un **escudo de tokens**: sanitiza salidas de datos masivas (truncando DataFrames) y filtra binarios pesados (como gráficos en Base64), protegiendo la ventana de contexto del modelo y preservando de manera íntegra el archivo `.ipynb` físico con sus figuras interactivas para revisión humana.
+Combina el ecosistema federado de **DataMesh SDK (OKF / ODKF v0.2)** y catálogos soberanos (`llms.txt`, CKAN MEFP) con un **escudo de tokens (`data-shield-mcp`)** que sanitiza salidas de datos masivas (truncando DataFrames) y filtra binarios pesados (como gráficos en Base64), protegiendo la ventana de contexto del modelo y preservando de manera íntegra el archivo `.ipynb` físico con figuras interactivas para revisión humana.
 
 ---
 
 ## 1. Configuración del Espacio de Trabajo del Usuario
 
-El plugin está diseñado para operar sobre cualquier directorio de análisis de datos del usuario **de forma limpia y no invasiva**. Para preparar tu proyecto cliente de datos:
+El plugin está diseñado para operar sobre cualquier directorio de análisis de datos del usuario de forma limpia y no invasiva:
 
 ### 1.1 Aislamiento de Archivos (`.gitignore` y `.antigravityignore`)
 Crea un archivo `.antigravityignore` en la raíz de tu proyecto de análisis para evitar que la IA indexe gigabytes de datos o lea directamente el JSON crudo de los notebooks:
@@ -28,10 +28,8 @@ En la raíz de tu proyecto de análisis, inicializa el entorno virtual con `uv` 
 uv add ipykernel pandas pyarrow openpyxl ipympl
 ```
 
-> **Nota:** La presencia de `ipykernel` en el `.venv` del proyecto cliente es obligatoria. El servidor MCP detecta automáticamente este entorno virtual para levantar y comunicar el kernel de Jupyter en él.
-
 ### 1.3 Contexto Semántico de Datos (Opcional pero Recomendado)
-Si dispones de metadatos o esquemas de las tablas en `data/`, crea un archivo `contexto_datos.md` en la raíz del proyecto cliente detallando nombres de variables, tipos, relaciones (1:1, 1:N) y particularidades estadísticas. El agente lo consultará antes de proponer transformaciones.
+Si dispones de metadatos o esquemas de las tablas en `data/`, crea un archivo `contexto_datos.md` en la raíz del proyecto cliente detallando nombres de variables, tipos, relaciones (1:1, 1:N) y particularidades estadísticas.
 
 ---
 
@@ -39,95 +37,72 @@ Si dispones de metadatos o esquemas de las tablas en `data/`, crea un archivo `c
 
 Una vez registrado el plugin, cuentas con dos formas sencillas de interactuar con él:
 
-### Opción A: Cambiar al Agente Especializado (`data-shield-agent`)
-Puedes cambiar el agente principal por defecto al agente `data-shield-agent` ejecutando el comando interactivo en Antigravity CLI:
+### Opción A: Cambiar al Agente Especializado (`bolivia-research-agent`)
+Puedes cambiar el agente principal por defecto ejecutando el comando interactivo en Antigravity CLI:
 ```text
 /agents
 ```
-En el menú de selección, escoge **`data-shield-agent`**. A partir de ese momento, el agente asumirá directamente el rol de **Científico de Datos Senior y experto en Estadística Matemática**, estructurando el notebook con narrativa metodológica en Markdown, validando hipótesis en borrador (`scratchpad`) y reportando interpretaciones técnicas fundamentadas.
+En el menú de selección, escoge **`bolivia-research-agent`** (o el alias compatible `data-shield-agent`). A partir de ese momento, el agente asumirá directamente el rol de **Investigador Senior de Datos y Analista Económico de Bolivia**:
+- Resuelve tríadas soberanas `[catalogo:dataset:recurso]` con DataMesh SDK.
+- Consulta series cambiarias P2P USDT/BOB y series fiscales del MEFP.
+- Estructura el notebook con narrativa metodológica en Markdown.
+- Valida hipótesis en borrador (`run_scratchpad_code`, `inspect_memory`).
+- Acata estrictamente los guardrails antialucinación (cero números inventados, transparencia ante nulos).
 
-### Opción B: Usar la Habilidad (`data-shield-skill`)
-Si prefieres mantener el agente estándar, la habilidad se activa automáticamente cuando se requiere manipular o analizar notebooks, o puedes activarla explícitamente mediante el comando:
-```text
-/data-shield-skill
-```
-El agente aplicará el protocolo de las 16 herramientas MCP (`create_notebook`, `run_scratchpad_code`, `add_and_execute_cell`, etc.) para manipular el archivo en `notebooks/analisis.ipynb` garantizando el blindaje de tokens.
-
-### Ciclo de Auditoría y Revisión Humana (*Human-in-the-Loop*)
-1. Tras la ejecución, abre `notebooks/analisis.ipynb` en tu editor habitual (VS Code, JupyterLab).
-2. Inspecciona de forma nativa los gráficos interactivos (zoom, paneo) y revisa las tablas completas.
-3. Si requieres ajustes, pídelos iterativamente en la terminal de Antigravity CLI (ej. *"Cambia la imputación de valores faltantes por un modelo KNN e inserta la justificación teórica"*), y el agente editará las celdas precisas sin rehacer todo el documento.
+### Opción B: Usar las Habilidades Incluidas
+Las habilidades se activan automáticamente según la tarea, o puedes invocarlas explícitamente:
+- `/data-shield-skill`: Procedimientos para manipular y ejecutar celdas en `.ipynb` vía MCP.
+- `/bolivia-data-research`: Guía metodológica para consultar fuentes soberanas y DataMesh SDK.
+- `/agent-guardrails`: Guardrails de fundamentación estricta y citas canónicas.
+- `/okf-knowledge-base`: Estándar Open Knowledge Format v0.2 y manifiestos `datapackage.yaml`.
+- `/research-methodology`: Clasificación y diseño metodológico experimental y cuantitativo.
 
 ---
 
-## 3. Instalación y Registro del Plugin
+## 3. Instalación y Registro en Antigravity CLI
 
-### Paso 1: Configurar la ruta del servidor MCP
-En el archivo `plugin/mcp_config.json`, indica la ruta absoluta donde se encuentra este repositorio:
-
-```json
-{
-  "mcpServers": {
-    "data-shield-mcp": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--project",
-        "/ruta/absoluta/a/data-shield",
-        "-m",
-        "data_shield_mcp"
-      ]
-    }
-  }
-}
+### Instalación mediante CLI:
+```bash
+agy plugin install /home/andreschirinos/Proyectos/data-shield/plugin
 ```
 
-### Paso 2: Registrar el plugin en Antigravity CLI
-Puedes habilitar el plugin mediante cualquiera de las siguientes vías:
-
-- **Instalación interactiva con `/plugin`:**
-  En la terminal de Antigravity CLI, escribe el comando `/plugin` para abrir el gestor de plugins y selecciona la opción para añadir o instalar un plugin local indicando la ruta a la carpeta `plugin` de este repositorio (`/ruta/absoluta/a/data-shield/plugin`).
-- **Instalación mediante CLI:**
-  ```bash
-  agy plugin install /ruta/absoluta/a/data-shield/plugin
-  ```
-- **Instalación Global:**
-  Copia o enlaza simbólicamente la carpeta `plugin` en `~/.gemini/antigravity-cli/plugins/data-shield`.
-- **Instalación a Nivel de Proyecto:**
-  Copia o enlaza la carpeta `plugin` en `.agents/plugins/data-shield` dentro del proyecto donde desees utilizarlo.
+### Registro del Servidor MCP:
+El plugin registra automáticamente `data-shield-mcp`. También puedes añadirlo o verificarlo globalmente mediante:
+```bash
+agy mcp add data-shield-mcp uv -- run --project /home/andreschirinos/Proyectos/data-shield -m data_shield_mcp
+agy mcp list
+```
 
 ---
 
 ## 4. Arquitectura del Repositorio
 
-El repositorio separa limpiamente la interfaz del plugin para Antigravity CLI del servidor MCP en Python:
-
 ```text
 data-shield/
-├── README.md                      # Documentación del plugin y guía de uso
-├── pyproject.toml                 # Configuración de empaquetado del servidor MCP (hatchling)
-├── data_shield_mcp/               # Servidor MCP (Python + MCP SDK v2)
+├── README.md                          # Documentación del plugin y guía de uso
+├── pyproject.toml                     # Configuración de empaquetado del servidor MCP (hatchling)
+├── data_shield_mcp/                   # Servidor MCP (Python + MCP SDK v2)
 │   ├── __init__.py
-│   ├── __main__.py                # Entrypoint con inyección dinámica de sys.path
-│   ├── kernel.py                  # Gestor asíncrono del kernel IPython y kernelspec
-│   ├── sanitizer.py               # Filtro de sanitización y escudado de tokens
-│   ├── server.py                  # Definición de las 16 herramientas MCP
-│   └── context/                   # Especificaciones técnicas de referencia
-└── plugin/                        # Paquete del Plugin para Antigravity CLI
-    ├── plugin.json                # Manifiesto oficial del plugin
-    ├── mcp_config.json            # Configuración de arranque del servidor MCP
+│   ├── __main__.py                    # Entrypoint ejecutable
+│   ├── kernel.py                      # Gestor asíncrono del kernel IPython y kernelspec
+│   ├── sanitizer.py                   # Filtro de sanitización y escudado de tokens
+│   ├── server.py                      # Definición de las 16 herramientas MCP
+│   └── context/                       # Especificaciones técnicas de referencia
+└── plugin/                            # Paquete del Plugin para Antigravity CLI
+    ├── plugin.json                    # Manifiesto oficial del plugin
+    ├── mcp_config.json                # Configuración de arranque del servidor MCP
     ├── agents/
-    │   └── data-shield-agent.md   # Subagente (Científico de Datos Senior)
+    │   ├── bolivia-research-agent.md  # Agente de Investigación Soberana de Bolivia
+    │   └── data-shield-agent.md       # Alias compatible: Científico de Datos Senior
+    ├── rules/
+    │   └── AGENTS.md                  # Reglas de blindaje de tokens y antialucinación
     └── skills/
-        └── data-shield-skill/
-            └── SKILL.md           # Habilidad técnica y catálogo de herramientas MCP
+        ├── data-shield-skill/         # Habilidad de ejecución y manipulación de notebooks
+        ├── bolivia-data-research/     # Habilidad de investigación económica y DataMesh
+        ├── agent-guardrails/          # Guardrails antialucinación y citas de tríadas
+        ├── okf-knowledge-base/        # Estándar OKF/ODKF v0.2
+        └── research-methodology/      # Metodología de investigación y controles de validez
 ```
-
-### Componentes del Plugin:
-- **`plugin/plugin.json`**: Manifiesto que declara el plugin ante Antigravity CLI.
-- **`plugin/agents/data-shield-agent.md`**: Define el subagente (`subagent: true`, `mainAgent: true`) con el perfil de un Científico de Datos Senior, asegurando rigor estadístico, validación empírica y justificación teórica.
-- **`plugin/skills/data-shield-skill/SKILL.md`**: Define la habilidad técnica procedural que enseña el catálogo de herramientas MCP, gestión de dependencias con `uv` y reglas de aislamiento de contexto.
-- **`plugin/mcp_config.json`**: Expone el servidor `data-shield-mcp` para que Antigravity CLI lo inicialice de manera automática en segundo plano.
 
 ---
 
