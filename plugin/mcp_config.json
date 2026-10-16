@@ -62,6 +62,39 @@
           "eager": true
         }
       }
+    },
+    "datamesh-mcp": {
+      "command": "datamesh",
+      "args": ["mcp-serve"],
+      "tools": {
+        "*": {
+          "eager": true
+        },
+        "datamesh_discover_catalogs": {
+          "eager": true
+        },
+        "datamesh_search_catalog": {
+          "eager": true
+        },
+        "datamesh_get_dataproduct": {
+          "eager": true
+        },
+        "datamesh_query_resource": {
+          "eager": true
+        },
+        "datamesh_sql_query": {
+          "eager": true
+        },
+        "query_sql": {
+          "eager": true
+        },
+        "read_resource": {
+          "eager": true
+        },
+        "datamesh_get_lineage": {
+          "eager": true
+        }
+      }
     }
   }
 }
