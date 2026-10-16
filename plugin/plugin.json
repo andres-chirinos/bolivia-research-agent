@@ -3,5 +3,5 @@
     "name": "bolivia-research-agent",
     "displayName": "Bolivia Research Agent",
     "version": "1.0.0",
-    "description": "Agente soberano de investigación económica y análisis de datos de Bolivia. Manipulación aislada de Jupyter Notebooks con protección de contexto (data-shield-mcp), DataMesh SDK (OKF v0.2), catálogos federados y guardrails antialucinación."
+    "description": "Agente de investigación y ciencia de datos agnóstico. Permite explorar información en cualquier dominio, consultar datos multiformato (CSV, Parquet, JSON, SQL), modelado estadístico y manipulación aislada de Jupyter Notebooks con protección de contexto (data-shield-mcp)."
 }

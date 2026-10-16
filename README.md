@@ -1,14 +1,14 @@
 # Plugin Antigravity: `bolivia-research-agent` (`data-shield`)
 
-`bolivia-research-agent` (construido sobre la infraestructura de `data-shield`) es un plugin avanzado para **Antigravity CLI** diseñado para la investigación de datos económicos, financieros y soberanos de **Bolivia**, así como la manipulación, limpieza y modelado estadístico riguroso en **Jupyter Notebooks (`.ipynb`)**.
+`bolivia-research-agent` (construido sobre la infraestructura de `data-shield`) es un plugin avanzado para **Antigravity CLI** diseñado para la **investigación agnóstica de información**, exploración profunda de datos y modelado estadístico riguroso en **Jupyter Notebooks (`.ipynb`)**.
 
-Combina el ecosistema federado de **DataMesh SDK (OKF / ODKF v0.2)** y catálogos soberanos (`llms.txt`, CKAN MEFP) con un **escudo de tokens (`data-shield-mcp`)** que sanitiza salidas de datos masivas (truncando DataFrames) y filtra binarios pesados (como gráficos en Base64), protegiendo la ventana de contexto del modelo y preservando de manera íntegra el archivo `.ipynb` físico con figuras interactivas para revisión humana.
+Proporciona al agente de IA capacidades abiertas para descubrir, consultar y correlacionar datos en cualquier formato (archivos tabulares, bases de datos SQL, APIs o catálogos), integrando un **escudo de tokens (`data-shield-mcp`)** que sanitiza salidas de datos masivas (truncando DataFrames) y filtra binarios pesados (como gráficos en Base64), protegiendo la ventana de contexto del modelo y preservando de manera íntegra el archivo `.ipynb` físico con figuras interactivas para revisión humana.
 
 ---
 
 ## 1. Configuración del Espacio de Trabajo del Usuario
 
-El plugin está diseñado para operar sobre cualquier directorio de análisis de datos del usuario de forma limpia y no invasiva:
+El plugin opera sobre cualquier directorio de análisis de datos de forma limpia y no invasiva:
 
 ### 1.1 Aislamiento de Archivos (`.gitignore` y `.antigravityignore`)
 Crea un archivo `.antigravityignore` en la raíz de tu proyecto de análisis para evitar que la IA indexe gigabytes de datos o lea directamente el JSON crudo de los notebooks:
@@ -42,9 +42,9 @@ Puedes cambiar el agente principal por defecto ejecutando el comando interactivo
 ```text
 /agents
 ```
-En el menú de selección, escoge **`bolivia-research-agent`** (o el alias compatible `data-shield-agent`). A partir de ese momento, el agente asumirá directamente el rol de **Investigador Senior de Datos y Analista Económico de Bolivia**:
-- Resuelve tríadas soberanas `[catalogo:dataset:recurso]` con DataMesh SDK.
-- Consulta series cambiarias P2P USDT/BOB y series fiscales del MEFP.
+En el menú de selección, escoge **`bolivia-research-agent`** (o el alias compatible `data-shield-agent`). A partir de ese momento, el agente asumirá directamente el rol de **Investigador Senior de Datos y Científico Analítico**:
+- Explora fuentes de información de forma abierta, sin cerrarse a un dominio o formato específico.
+- Cruza datos multiformato (CSV, Parquet, JSON, SQL, APIs).
 - Estructura el notebook con narrativa metodológica en Markdown.
 - Valida hipótesis en borrador (`run_scratchpad_code`, `inspect_memory`).
 - Acata estrictamente los guardrails antialucinación (cero números inventados, transparencia ante nulos).
@@ -52,9 +52,9 @@ En el menú de selección, escoge **`bolivia-research-agent`** (o el alias compa
 ### Opción B: Usar las Habilidades Incluidas
 Las habilidades se activan automáticamente según la tarea, o puedes invocarlas explícitamente:
 - `/data-shield-skill`: Procedimientos para manipular y ejecutar celdas en `.ipynb` vía MCP.
-- `/bolivia-data-research`: Guía metodológica para consultar fuentes soberanas y DataMesh SDK.
-- `/agent-guardrails`: Guardrails de fundamentación estricta y citas canónicas.
-- `/okf-knowledge-base`: Estándar Open Knowledge Format v0.2 y manifiestos `datapackage.yaml`.
+- `/data-research`: Metodología universal de exploración de información y análisis de datos.
+- `/agent-guardrails`: Guardrails de fundamentación estricta y citas de procedencia.
+- `/okf-knowledge-base`: Estructuración de paquetes de datos y linaje epistémico.
 - `/research-methodology`: Clasificación y diseño metodológico experimental y cuantitativo.
 
 ---
@@ -92,15 +92,15 @@ data-shield/
     ├── plugin.json                    # Manifiesto oficial del plugin
     ├── mcp_config.json                # Configuración de arranque del servidor MCP
     ├── agents/
-    │   ├── bolivia-research-agent.md  # Agente de Investigación Soberana de Bolivia
+    │   ├── bolivia-research-agent.md  # Agente de Investigación y Ciencia de Datos
     │   └── data-shield-agent.md       # Alias compatible: Científico de Datos Senior
     ├── rules/
     │   └── AGENTS.md                  # Reglas de blindaje de tokens y antialucinación
     └── skills/
         ├── data-shield-skill/         # Habilidad de ejecución y manipulación de notebooks
-        ├── bolivia-data-research/     # Habilidad de investigación económica y DataMesh
-        ├── agent-guardrails/          # Guardrails antialucinación y citas de tríadas
-        ├── okf-knowledge-base/        # Estándar OKF/ODKF v0.2
+        ├── data-research/             # Habilidad de investigación y exploración abierta de datos
+        ├── agent-guardrails/          # Guardrails antialucinación y citas de procedencia
+        ├── okf-knowledge-base/        # Empaquetado y linaje de datos
         └── research-methodology/      # Metodología de investigación y controles de validez
 ```
 
