@@ -51,6 +51,7 @@ El plugin empaqueta un conjunto completo de habilidades para asistir a los agent
 | **`keep-it-simple`** | `/keep-it-simple` | Filosofía KISS/YAGNI para evitar sobreingeniería y abstracciones prematuras innecesarias. |
 | **`agent-guardrails`** | `/agent-guardrails` | Guardrails antialucinación, fundamentación factual y citas obligatorias de procedencia. |
 | **`research-methodology`** | `/research-methodology` | Diseño de investigación científica, validez metodológica y clasificación de hipótesis. |
+| **`notebooklm`** | `/notebooklm` | Memoria externa persistente en Gemini Notebook / NotebookLM (`nlm`): consulta de bibliografía, literatura académica y citas fundamentadas. |
 | **`okf-knowledge-base`** | `/okf-knowledge-base` | Estándar Open Knowledge Format (OKF / ODKF v0.2) para linaje epistémico y paquetes Frictionless. |
 
 ---
@@ -62,10 +63,9 @@ El plugin empaqueta un conjunto completo de habilidades para asistir a los agent
 agy plugin install /home/andreschirinos/Proyectos/data-shield/plugin
 ```
 
-### Registro del Servidor MCP:
-El plugin expone automáticamente `data-shield-mcp`. Para añadirlo globalmente a Antigravity:
+### Registro de Servidores MCP:
+El plugin expone automáticamente `data-shield-mcp`, `datamesh-mcp` y `notebooklm-mcp`. Para verificarlos globalmente:
 ```bash
-agy mcp add data-shield-mcp uv -- run --project /home/andreschirinos/Proyectos/data-shield -m data_shield_mcp
 agy mcp list
 ```
 

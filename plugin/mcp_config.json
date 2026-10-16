@@ -95,6 +95,10 @@
           "eager": true
         }
       }
+    },
+    "notebooklm-mcp": {
+      "command": "/home/andreschirinos/.local/bin/notebooklm-mcp",
+      "args": ["--transport", "stdio"]
     }
   }
 }
