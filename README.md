@@ -1,73 +1,69 @@
-# Plugin Antigravity: `bolivia-research-agent` (`data-shield`)
+# Suite Multidisciplinaria de Agentes Antigravity: `bolivia-research-agent` (`data-shield`)
 
-`bolivia-research-agent` (construido sobre la infraestructura de `data-shield`) es un plugin avanzado para **Antigravity CLI** diseñado para la **investigación agnóstica de información**, exploración profunda de datos y modelado estadístico riguroso en **Jupyter Notebooks (`.ipynb`)**.
-
-Proporciona al agente de IA capacidades abiertas para descubrir, consultar y correlacionar datos en cualquier formato (archivos tabulares, bases de datos SQL, APIs o catálogos), integrando un **escudo de tokens (`data-shield-mcp`)** que sanitiza salidas de datos masivas (truncando DataFrames) y filtra binarios pesados (como gráficos en Base64), protegiendo la ventana de contexto del modelo y preservando de manera íntegra el archivo `.ipynb` físico con figuras interactivas para revisión humana.
+Esta suite proporciona un ecosistema modular de **agentes especializados** para **Antigravity CLI**, diseñados para cubrir el ciclo completo de vida del software y la analítica: desde la investigación abierta de datos y el modelado en Jupyter Notebooks con protección de contexto (`data-shield-mcp`), hasta el refinamiento metodológico de requerimientos, diseño arquitectónico con **Domain-Driven Design (DDD)** e implementación técnica desacoplada bajo **Arquitectura Hexagonal (Ports & Adapters)** y principios **SOLID**.
 
 ---
 
-## 1. Configuración del Espacio de Trabajo del Usuario
+## 1. Catálogo de Agentes Especializados
 
-El plugin opera sobre cualquier directorio de análisis de datos de forma limpia y no invasiva:
-
-### 1.1 Aislamiento de Archivos (`.gitignore` y `.antigravityignore`)
-Crea un archivo `.antigravityignore` en la raíz de tu proyecto de análisis para evitar que la IA indexe gigabytes de datos o lea directamente el JSON crudo de los notebooks:
-
-```text
-data/
-.venv/
-notebooks/
-```
-
-> **Regla de Oro:** Todo notebook debe residir obligatoriamente dentro de la carpeta `notebooks/`. Al ocultar este directorio a las herramientas genéricas del CLI, fuerzas a la IA a interactuar con los notebooks **exclusivamente mediante las herramientas del servidor `data-shield-mcp`**, garantizando la sanitización de salidas.
-
-### 1.2 Entorno Virtual del Proyecto de Datos
-En la raíz de tu proyecto de análisis, inicializa el entorno virtual con `uv` e instala `ipykernel` junto con las librerías analíticas esenciales:
-
-```bash
-uv add ipykernel pandas pyarrow openpyxl ipympl
-```
-
-### 1.3 Contexto Semántico de Datos (Opcional pero Recomendado)
-Si dispones de metadatos o esquemas de las tablas en `data/`, crea un archivo `contexto_datos.md` en la raíz del proyecto cliente detallando nombres de variables, tipos, relaciones (1:1, 1:N) y particularidades estadísticas.
-
----
-
-## 2. Modos de Uso en Antigravity CLI
-
-Una vez registrado el plugin, cuentas con dos formas sencillas de interactuar con él:
-
-### Opción A: Cambiar al Agente Especializado (`bolivia-research-agent`)
-Puedes cambiar el agente principal por defecto ejecutando el comando interactivo en Antigravity CLI:
+Puedes seleccionar cualquiera de estos agentes en cualquier momento ejecutando en la terminal de Antigravity CLI:
 ```text
 /agents
 ```
-En el menú de selección, escoge **`bolivia-research-agent`** (o el alias compatible `data-shield-agent`). A partir de ese momento, el agente asumirá directamente el rol de **Investigador Senior de Datos y Científico Analítico**:
-- Explora fuentes de información de forma abierta, sin cerrarse a un dominio o formato específico.
-- Cruza datos multiformato (CSV, Parquet, JSON, SQL, APIs).
-- Estructura el notebook con narrativa metodológica en Markdown.
-- Valida hipótesis en borrador (`run_scratchpad_code`, `inspect_memory`).
-- Acata estrictamente los guardrails antialucinación (cero números inventados, transparencia ante nulos).
 
-### Opción B: Usar las Habilidades Incluidas
-Las habilidades se activan automáticamente según la tarea, o puedes invocarlas explícitamente:
-- `/data-shield-skill`: Procedimientos para manipular y ejecutar celdas en `.ipynb` vía MCP.
-- `/data-research`: Metodología universal de exploración de información y análisis de datos.
-- `/agent-guardrails`: Guardrails de fundamentación estricta y citas de procedencia.
-- `/okf-knowledge-base`: Estructuración de paquetes de datos y linaje epistémico.
-- `/research-methodology`: Clasificación y diseño metodológico experimental y cuantitativo.
+### 1. `bolivia-research-agent` (Investigador Senior y Ciencia de Datos)
+- **Propósito:** Exploración abierta de información, formulación y contraste de hipótesis, análisis multiformato (CSV, Parquet, JSON, SQL, APIs) y manipulación reproducible de Jupyter Notebooks.
+- **Blindaje de Tokens:** Opera con el soporte del servidor **`data-shield-mcp`**, ejecutando transformaciones y gráficos interactivos (`ipympl`) en el kernel local mientras trunca tablas pesadas y protege la ventana de contexto.
+- **Guardrails:** Fundamentación estricta en datos reales, cita obligatoria de procedencia y transparencia absoluta ante datos nulos o vacíos.
+
+### 2. `software-architect-agent` (Arquitectura de Software, Requerimientos y Calidad)
+- **Propósito:** Levantamiento y refinamiento formal de requerimientos, diseño arquitectónico estratégico y táctico, y aseguramiento de calidad de software.
+- **Domain-Driven Design (DDD):** Delimitación de Bounded Contexts, mapeo de relaciones (Context Maps), definición de lenguaje ubicuo compartido, diseño de Aggregates, Entities, Value Objects y Domain Events.
+- **Registro de Decisiones (ADRs):** Documentación del *por qué*, evaluando alternativas, compensaciones (trade-offs) y consecuencias de diseño.
+- **Gobierno de Calidad:** Simplicidad pragmática (KISS/YAGNI), estándares de tipado estricto, inmutabilidad y diseño de la pirámide de pruebas.
+
+### 3. `hexagonal-implementer-agent` (Ingeniero de Software e Implementador Técnico)
+- **Propósito:** Implementación de código de producción desacoplado, mantenible y de alto rendimiento.
+- **Arquitectura Hexagonal (Ports & Adapters):**
+  - Núcleo de dominio puro (`domain/`) sin dependencias de infraestructura ni frameworks.
+  - Puertos de entrada y salida explícitos (`ports/inbound`, `ports/outbound`).
+  - Casos de uso orquestadores (`usecases/`).
+  - Adaptadores desacoplados (`adapters/`).
+- **Principios SOLID:** Responsabilidad única (un archivo por responsabilidad), abierto/cerrado, sustitución de Liskov, segregación de interfaces e inversión de dependencias estricta.
+- **Pruebas y Robustez:** Desarrollo guiado por pruebas (TDD), fixtures herméticas en `pytest`, 100% de éxito en pruebas, auditoría de seguridad defensiva (anti-SSRF, path traversal) y optimización de rendimiento en streaming.
+
+---
+
+## 2. Habilidades Disponibles (`skills/`)
+
+El plugin empaqueta un conjunto completo de habilidades para asistir a los agentes:
+
+| Habilidad | Comando | Descripción |
+| :--- | :--- | :--- |
+| **`data-shield-skill`** | `/data-shield-skill` | 16 herramientas MCP para manipular notebooks, scratchpad invisible e inspección de memoria en RAM. |
+| **`data-research`** | `/data-research` | Metodología de exploración profunda de datos, diagnóstico estadístico y calidad de fuentes multiformato. |
+| **`domain-driven-design`** | `/domain-driven-design` | Modelado de dominio, Bounded Contexts, Aggregates, Context Maps y lenguaje ubicuo. |
+| **`documentation-and-adrs`** | `/documentation-and-adrs` | Registro de decisiones arquitectónicas (ADRs), trade-offs y especificaciones de casos de uso. |
+| **`hexagonal-architecture`** | `/hexagonal-architecture` | Diseño e implementación de sistemas desacoplados con Ports & Adapters y Dependency Inversion. |
+| **`python-code-style`** | `/python-code-style` | Estándares de código, tipado estricto Python 3.10+, inmutabilidad (`frozen=True`) y control de errores. |
+| **`python-testing-patterns`**| `/python-testing-patterns`| Patrones avanzados de pruebas con `pytest`, dobles de prueba (mocks), fixtures y verificación de invariantes. |
+| **`security-review`** | `/security-review` | Auditoría de seguridad de código, validación defensiva de inputs, prevención de SSRF y path traversal. |
+| **`keep-it-simple`** | `/keep-it-simple` | Filosofía KISS/YAGNI para evitar sobreingeniería y abstracciones prematuras innecesarias. |
+| **`agent-guardrails`** | `/agent-guardrails` | Guardrails antialucinación, fundamentación factual y citas obligatorias de procedencia. |
+| **`research-methodology`** | `/research-methodology` | Diseño de investigación científica, validez metodológica y clasificación de hipótesis. |
+| **`okf-knowledge-base`** | `/okf-knowledge-base` | Estándar Open Knowledge Format (OKF / ODKF v0.2) para linaje epistémico y paquetes Frictionless. |
 
 ---
 
 ## 3. Instalación y Registro en Antigravity CLI
 
-### Instalación mediante CLI:
+### Instalación del Plugin Completo:
 ```bash
 agy plugin install /home/andreschirinos/Proyectos/data-shield/plugin
 ```
 
 ### Registro del Servidor MCP:
-El plugin registra automáticamente `data-shield-mcp`. También puedes añadirlo o verificarlo globalmente mediante:
+El plugin expone automáticamente `data-shield-mcp`. Para añadirlo globalmente a Antigravity:
 ```bash
 agy mcp add data-shield-mcp uv -- run --project /home/andreschirinos/Proyectos/data-shield -m data_shield_mcp
 agy mcp list
@@ -75,45 +71,29 @@ agy mcp list
 
 ---
 
-## 4. Arquitectura del Repositorio
+## 4. Estructura del Repositorio
 
 ```text
 data-shield/
-├── README.md                          # Documentación del plugin y guía de uso
-├── pyproject.toml                     # Configuración de empaquetado del servidor MCP (hatchling)
-├── data_shield_mcp/                   # Servidor MCP (Python + MCP SDK v2)
+├── README.md                            # Guía completa de la suite y catálogo de agentes
+├── pyproject.toml                       # Configuración de empaquetado del servidor MCP
+├── data_shield_mcp/                     # Servidor MCP (Python + MCP SDK v2)
 │   ├── __init__.py
-│   ├── __main__.py                    # Entrypoint ejecutable
-│   ├── kernel.py                      # Gestor asíncrono del kernel IPython y kernelspec
-│   ├── sanitizer.py                   # Filtro de sanitización y escudado de tokens
-│   ├── server.py                      # Definición de las 16 herramientas MCP
-│   └── context/                       # Especificaciones técnicas de referencia
-└── plugin/                            # Paquete del Plugin para Antigravity CLI
-    ├── plugin.json                    # Manifiesto oficial del plugin
-    ├── mcp_config.json                # Configuración de arranque del servidor MCP
-    ├── agents/
-    │   ├── bolivia-research-agent.md  # Agente de Investigación y Ciencia de Datos
-    │   └── data-shield-agent.md       # Alias compatible: Científico de Datos Senior
+│   ├── __main__.py                      # Entrypoint ejecutable
+│   ├── kernel.py                        # Gestor asíncrono del kernel IPython y kernelspec
+│   ├── sanitizer.py                     # Filtro de sanitización y escudado de tokens
+│   ├── server.py                        # Definición de las 16 herramientas MCP
+│   └── context/                         # Especificaciones técnicas de referencia
+└── plugin/                              # Paquete del Plugin para Antigravity CLI
+    ├── plugin.json                      # Manifiesto oficial del plugin (v1.1.0)
+    ├── mcp_config.json                  # Configuración de arranque del servidor MCP
+    ├── agents/                          # Suite de agentes especializados
+    │   ├── bolivia-research-agent.md    # Investigación y Ciencia de Datos
+    │   ├── software-architect-agent.md  # Arquitectura, Requerimientos y DDD
+    │   ├── hexagonal-implementer-agent.md # Implementación Hexagonal y SOLID
+    │   ├── software-engineer-agent.md   # Alias de implementador técnico
+    │   └── data-shield-agent.md         # Alias de científico de datos
     ├── rules/
-    │   └── AGENTS.md                  # Reglas de blindaje de tokens y antialucinación
-    └── skills/
-        ├── data-shield-skill/         # Habilidad de ejecución y manipulación de notebooks
-        ├── data-research/             # Habilidad de investigación y exploración abierta de datos
-        ├── agent-guardrails/          # Guardrails antialucinación y citas de procedencia
-        ├── okf-knowledge-base/        # Empaquetado y linaje de datos
-        └── research-methodology/      # Metodología de investigación y controles de validez
+    │   └── AGENTS.md                    # Reglas unificadas de arquitectura, código y veracidad
+    └── skills/                          # Las 12 habilidades técnicas y metodológicas
 ```
-
----
-
-## 5. Mecanismo de Blindaje de Contexto (El "Escudo")
-
-Cuando el modelo ejecuta código en el notebook a través del MCP, `data-shield-mcp` procesa las salidas en memoria:
-
-1. **Gráficos Interactivos y Widgets (`ipympl`):**
-   - El código en el notebook renderiza figuras interactivas con `%matplotlib ipympl` (`fig, ax = plt.subplots()`, `plt.show()`).
-   - El servidor MCP intercepta los datos pesados en Base64 y JSON de widgets, guardándolos en el `.ipynb` para su visualización humana en el editor, pero devolviendo al modelo únicamente: `[Gráfico renderizado localmente]`.
-2. **DataFrames y Tablas Masivas:**
-   - Si se evalúa un DataFrame de Pandas (dejando la variable en la última línea), el sanitizador intercepta la tabla y trunca su salida a las 5 primeras y 5 últimas filas con un indicador intermedio (`... [X filas omitidas] ...`).
-3. **Limpieza de Trazas de Error:**
-   - Los mensajes de error y tracebacks son saneados eliminando códigos ANSI de color y anonimizando rutas del sistema operativo para ahorrar tokens y proteger la privacidad.

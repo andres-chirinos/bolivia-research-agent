@@ -1,7 +1,7 @@
 {
     "$schema": "https://antigravity.google/schemas/v1/plugin.json",
     "name": "bolivia-research-agent",
-    "displayName": "Bolivia Research Agent",
-    "version": "1.0.0",
-    "description": "Agente de investigación y ciencia de datos agnóstico. Permite explorar información en cualquier dominio, consultar datos multiformato (CSV, Parquet, JSON, SQL), modelado estadístico y manipulación aislada de Jupyter Notebooks con protección de contexto (data-shield-mcp)."
+    "displayName": "Engineering & Research Multi-Agent Suite",
+    "version": "1.1.0",
+    "description": "Suite integral de agentes especializados para Antigravity: Investigación y Ciencia de Datos con protección de tokens (data-shield-mcp), Arquitectura de Software y Requerimientos (Domain-Driven Design / ADRs) e Implementación Técnica desacoplada (Arquitectura Hexagonal / SOLID / TDD)."
 }
